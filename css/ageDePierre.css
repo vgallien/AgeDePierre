@@ -1,7 +1,51 @@
-.joueur {
-    padding: 1em;
-}
+.joueur { width: 25%; }
 .joueur:nth-child(odd) {
-
     background-color: #eee;
+}
+
+.zone {
+    display: inline-block;
+    width: 23%;
+    margin: 0 1%;
+}
+.zone.chasse {
+    display: block;
+    width: 100%;
+    height: 300px;
+    margin: 1em;
+    padding: 1em;
+    background-color: #53772f;
+}
+
+.foret {
+    background-color: #3daa37;
+}
+.glaisiere {
+    background-color: #d67f24;
+}
+.carriere {
+    background-color: #777777;
+}
+.riviere {
+    background-color: #41a0c8;
+}
+
+.emplacement {
+    display: inline-block;
+    margin: .5em;
+    height: 50px;
+    width: 50px;
+    background-color: #eee;
+    transition: background-color .2s ease;
+    cursor: pointer;
+}
+.emplacementFull {
+    width: 100%;
+    height: 220px;
+    background-color: #eee;
+    cursor: pointer;
+}
+.emplacementFull:hover,
+.emplacement:hover {
+    background-color: #aaa;
 }

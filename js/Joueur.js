@@ -14,4 +14,15 @@ class Joueur {
     setFirstPlayer(bool) {
         this.isFirstPlayer = bool
     }
+
+    render(plateau) {
+        let plateauJoueur = document.createElement('div')
+        plateauJoueur.classList.add("plateau-joueur")
+
+        let tribu = document.createElement('div')
+        tribu.innerHTML = this.tailleTribu
+
+        plateauJoueur.append(tribu)
+        plateau.append(plateauJoueur)
+    }
 }

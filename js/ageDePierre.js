@@ -82,6 +82,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         })
         let jeu = new Jeu(joueurs)
         jeu.firstPlayer(joueurs[0])
-        console.log(jeu.joueurs)
+        jeu.render()
     })
 })
