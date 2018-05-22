@@ -1,11 +1,5 @@
 var couleursJoueur = ["Rouge", "Vert", "Bleu", "Jaune"]
-
-class Joueur {
-    constructor(nom, couleur) {
-        this.nom = nom
-        this.couleur = couleur
-    }
-}
+var joueurs = []
 
 function createJoueur() {
 
@@ -80,8 +74,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     document.querySelector("#createJoueur").addEventListener("click", createJoueur)
     document.querySelector("#btnPlay").addEventListener("click", function() {
+        let isValid = true
         document.querySelectorAll(".joueur").forEach(function(element) {
-            console.log(element.querySelector("input").value)
+            let nom = element.querySelector("input").value
+            let couleur = element.querySelector("select").value
+            joueurs.push(new Joueur(nom, couleur))
         })
+        let jeu = new Jeu(joueurs)
+        jeu.firstPlayer(joueurs[0])
+        console.log(jeu.joueurs)
     })
 })
