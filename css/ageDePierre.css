@@ -1,0 +1,7 @@
+.joueur {
+    padding: 1em;
+}
+.joueur:nth-child(odd) {
+
+    background-color: #eee;
+}

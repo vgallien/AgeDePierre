@@ -1,50 +1,70 @@
 var couleursJoueur = ["Rouge", "Vert", "Bleu", "Jaune"]
 
+class Joueur {
+    constructor(nom, couleur) {
+        this.nom = nom
+        this.couleur = couleur
+    }
+}
+
 function createJoueur() {
 
-    var nbJoueurs = document.querySelectorAll(".joueur").length
+    let nbJoueurs = document.querySelectorAll(".joueur").length
     if (nbJoueurs == 3) {
         document.querySelector("#createJoueur").disabled = "disabled"
     }
-    var numJoueur = nbJoueurs + 1
+    let numJoueur = nbJoueurs + 1
 
-    var elementJoueur = document.createElement('div')
+    let elementJoueur = document.createElement('div')
     elementJoueur.classList.add("joueur")
+    elementJoueur.classList.add("d-inline-block")
+    elementJoueur.classList.add("p-3")
 
-    var labelJoueur = document.createElement('label')
+    let elmt1 = document.createElement('div')
+    elmt1.classList.add("form-group")
+
+    let labelJoueur = document.createElement('label')
     labelJoueur.innerHTML = "Joueur " + numJoueur
 
-    var inputJoueur = document.createElement('input')
+    let inputJoueur = document.createElement('input')
+    inputJoueur.classList.add("form-control")
     inputJoueur.name = "nomJoueur" + numJoueur
+    inputJoueur.placeholder = "Nom du joueur"
 
-    var selectCouleur = document.createElement('select')
+    let elmt2 = document.createElement('div')
+    elmt2.classList.add("form-group")
+
+    let labelCouleur = document.createElement('label')
+    labelCouleur.innerHTML = "Couleur sélectionnée"
+
+    let selectCouleur = document.createElement('select')
     selectCouleur.classList.add("selectCouleur")
+    selectCouleur.classList.add("form-control")
     selectCouleur.name = "couleurJoueur" + numJoueur
-    for (var i = 0; i < couleursJoueur.length; i++) {
-        var optionCouleur = document.createElement('option')
+    for (let i = 0; i < couleursJoueur.length; i++) {
+        let optionCouleur = document.createElement('option')
         optionCouleur.value = couleursJoueur[i]
         optionCouleur.innerHTML = couleursJoueur[i]
-        if (i == numJoueur) optionCouleur.selected = true
         selectCouleur.appendChild(optionCouleur)
     }
 
-    selectCouleur.addEventListener("change", function() { checkSelected(selectCouleur) })
-    checkSelected(selectCouleur)
+    // selectCouleur.addEventListener("change", function() { checkSelected(selectCouleur) })
+    // checkSelected(selectCouleur)
 
-    elementJoueur.appendChild(labelJoueur)
-    elementJoueur.appendChild(inputJoueur)
-    elementJoueur.appendChild(selectCouleur)
+    elmt1.appendChild(labelJoueur)
+    elmt1.appendChild(inputJoueur)
+    elmt2.appendChild(labelCouleur)
+    elmt2.appendChild(selectCouleur)
+    elementJoueur.appendChild(elmt1)
+    elementJoueur.appendChild(elmt2)
 
-    var selectJoueur = document.querySelector("#selectJoueur")
+    let selectJoueur = document.querySelector("#selectJoueur")
     selectJoueur.appendChild(elementJoueur)
-
-
-
 }
 
 function checkSelected(elementSelect) {
     console.log(elementSelect)
-    var value = elementSelect.value
+    let value = elementSelect.value
     document.querySelectorAll(".selectCouleur").forEach(function(element) {
         if (element == elementSelect) return
         element.childNodes.forEach(function(option) {
@@ -52,10 +72,16 @@ function checkSelected(elementSelect) {
             else { option.disabled = false }
         })
     })
-
 }
 
-createJoueur()
-createJoueur()
+document.addEventListener("DOMContentLoaded", function(event) {
+    createJoueur()
+    createJoueur()
 
-document.querySelector("#createJoueur").addEventListener("click", createJoueur)
+    document.querySelector("#createJoueur").addEventListener("click", createJoueur)
+    document.querySelector("#btnPlay").addEventListener("click", function() {
+        document.querySelectorAll(".joueur").forEach(function(element) {
+            console.log(element.querySelector("input").value)
+        })
+    })
+})
