@@ -15,14 +15,38 @@ class Joueur {
         this.isFirstPlayer = bool
     }
 
-    render(plateau) {
+    affiche(plateau) {
         let plateauJoueur = document.createElement('div')
         plateauJoueur.classList.add("plateau-joueur")
 
-        let tribu = document.createElement('div')
-        tribu.innerHTML = this.tailleTribu
+        let titrePlateauJoueur = document.createElement('h2')
+        titrePlateauJoueur.innerHTML = "Plateau de " + this.nom
 
+        let tribu = document.createElement('div')
+        tribu.innerHTML = "Taille de la tribu : " + this.tailleTribu
+
+        let nourriture = document.createElement('div')
+        nourriture.innerHTML = "Nourriture : " + this.nourriture
+
+        let bois = document.createElement('div')
+        bois.innerHTML = "Bois : " + this.bois
+
+        let argile = document.createElement('div')
+        argile.innerHTML = "Argile : " + this.argile
+
+        let pierre = document.createElement('div')
+        pierre.innerHTML = "Pierre : " + this.pierre
+
+        let or = document.createElement('div')
+        or.innerHTML = "Or : " + this.or
+
+        plateauJoueur.append(titrePlateauJoueur)
         plateauJoueur.append(tribu)
+        plateauJoueur.append(nourriture)
+        plateauJoueur.append(bois)
+        plateauJoueur.append(argile)
+        plateauJoueur.append(pierre)
+        plateauJoueur.append(or)
         plateau.append(plateauJoueur)
     }
 }

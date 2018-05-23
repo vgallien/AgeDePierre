@@ -1,5 +1,11 @@
+var nom = ["Jean-Jacques", "Charles-Edouard", "Rosalie", "Mokhtar"]
 var couleursJoueur = ["Rouge", "Vert", "Bleu", "Jaune"]
 var joueurs = []
+
+function cleanUpSpecialChars(str) {
+    str = str.replace(/é|è|ê/g,"e");
+    return str;
+}
 
 function createJoueur() {
 
@@ -24,6 +30,7 @@ function createJoueur() {
     inputJoueur.classList.add("form-control")
     inputJoueur.name = "nomJoueur" + numJoueur
     inputJoueur.placeholder = "Nom du joueur"
+    inputJoueur.value = nom[nbJoueurs]
 
     let elmt2 = document.createElement('div')
     elmt2.classList.add("form-group")
@@ -82,6 +89,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         })
         let jeu = new Jeu(joueurs)
         jeu.firstPlayer(joueurs[0])
-        jeu.render()
+        jeu.affiche()
     })
 })
